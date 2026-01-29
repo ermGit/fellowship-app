@@ -80,6 +80,14 @@ fellowship-app/
 │       └── app.blade.php                   # Main template
 ├── routes/
 │   └── web.php                             # Application routes
+├── tests/
+│   ├─── CreatesApplication.php
+│   ├─── Feature/
+│   │    └── BookControllerTest.php
+│   ├─── Unit/
+│   │    └── BookControllerUnitTest.php
+│   └─── TestCase.php
+├── phpunit.xml
 ├── demo.html                               # Standalone demo
 ├── package.json                            # NPM dependencies
 ├── composer.json                           # PHP dependencies

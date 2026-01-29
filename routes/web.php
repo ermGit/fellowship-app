@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\BookController;
 
 Route::get('/', function () {
     return Inertia::render('Home');
@@ -11,5 +10,3 @@ Route::get('/', function () {
 Route::get('/search', function () {
     return Inertia::render('Search');
 })->name('search');
-
-Route::get('/api/books', [BookController::class, 'index']);

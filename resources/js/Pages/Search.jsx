@@ -2,6 +2,7 @@ import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import Layout from '../Components/Layout';
 
+// Displays the book titles which contain the User's input
 export default function Search() {
     const [books, setBooks] = useState([]);
     const [filteredBooks, setFilteredBooks] = useState([]);
@@ -9,14 +10,20 @@ export default function Search() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Executes once
     useEffect(() => {
         fetchBooks();
     }, []);
 
+    // Executes whenever searchTerm or books changes
     useEffect(() => {
         if (searchTerm === '') {
+            // Sets the books to display to all
+            // books from the initial fetchBooks call
             setFilteredBooks(books);
         } else {
+            // Filters the book names to show only
+            // those that include the search term.
             const filtered = books.filter(book =>
                 book.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
@@ -28,12 +35,15 @@ export default function Search() {
         try {
             setLoading(true);
             const response = await fetch('/api/books');
-            
+
+            // If the API call returns an error
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
             }
             
             const data = await response.json();
+
+            // Sets both Books and FilteredBooks states as all books
             setBooks(data);
             setFilteredBooks(data);
             setError(null);
